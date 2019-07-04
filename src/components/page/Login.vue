@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import userData from '@/utils/userdata'
 export default {
   data: function () {
     return {
@@ -55,12 +56,44 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          localStorage.setItem('ms_username', this.ruleForm.username)
-          this.$router.push('/')
+          this.$axios({
+            method: 'post',
+            url: '/user/login',
+            data: this.ruleForm
+          }).then((res) => {
+            if (res.status !== 0) {
+              this.$message({
+                showClose: true,
+                message: res.message,
+                type: 'warning'
+              })
+              return false
+            }
+            // 登入成功
+            this.getUserInf()
+          })
         } else {
           console.log('error submit!!')
           return false
         }
+      })
+    },
+    // 获取用户信息
+    getUserInf () {
+      this.$axios({
+        method: 'post',
+        url: '/user/get-inf',
+        data: this.ruleForm
+      }).then(res => {
+        if (res.status !== 0) {
+          this.$message({
+            showClose: true,
+            message: res.message,
+            type: 'warning'
+          })
+          return false
+        }
+        userData.setUserInf(res.data)
       })
     }
   }

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const service = axios.create({
   // process.env.NODE_ENV === 'development' 来判断是否开发环境
-  baseURL: 'https://www.easy-mock.com/mock/592501a391470c0ac1fab128',
+  baseURL: 'http://localhost:8080/',
   timeout: 5000,
   // 允许携带token ,这个是解决跨域产生的相关问题
   withCredentials: true
