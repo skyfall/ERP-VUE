@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import bus from './bus'
+import bus from '@components/common/bus'
 export default {
   data () {
     return {
