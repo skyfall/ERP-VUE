@@ -34,7 +34,10 @@ let clearUserInf = () => {
  */
 let getUserInfoByKey = (keyName) => {
   let userInfoObj = JSON.parse(localStorage.getItem(UserInfKey))
-  return userInfoObj.keyName === undefined ? userInfoObj.keyName : ''
+  if (!userInfoObj) {
+    return ''
+  }
+  return userInfoObj[keyName] === undefined ? userInfoObj[keyName] : ''
 }
 
 /**

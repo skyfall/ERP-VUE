@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Vue from 'vue'
 
 const service = axios.create({
   // process.env.NODE_ENV === 'development' 来判断是否开发环境
@@ -24,17 +25,18 @@ service.interceptors.response.use(
     if (response.status === 200 && response.data.status !== 1000) {
       // 请求成功 返回状态 不是重新登入码
       return response.data
-    } else {
+    } else if (response.status === 200 && response.data.status === 1000) {
       // 请求成功 需要重新登入
-      // eslint-disable-next-line prefer-promise-reject-errors
-      Promise.reject()
+      Vue.push('/login')
     }
+    return Promise.reject(response)
   },
   // 请求错误
   error => {
-    console.log(error)
-    // eslint-disable-next-line prefer-promise-reject-errors
-    return Promise.reject()
+    Vue.prototype.$alert('系统错误', '系统错误', {
+      confirmButtonText: '确定'
+    })
+    return Promise.reject(error)
   }
 )
 

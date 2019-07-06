@@ -71,6 +71,8 @@ export default {
             }
             // 登入成功
             this.getUserInf()
+          }).catch((error) => {
+            console.log(error)
           })
         } else {
           console.log('error submit!!')
