@@ -35,12 +35,13 @@
 
 <script>
 import userData from '@/utils/userdata'
+import router from '@/router/index'
 export default {
   data: function () {
     return {
       ruleForm: {
         username: 'admin',
-        password: '123123'
+        password: '123456'
       },
       rules: {
         username: [
@@ -83,9 +84,8 @@ export default {
     // 获取用户信息
     getUserInf () {
       this.$axios({
-        method: 'post',
-        url: '/user/get-inf',
-        data: this.ruleForm
+        method: 'get',
+        url: '/user/get-inf'
       }).then(res => {
         if (res.status !== 0) {
           this.$message({
@@ -96,6 +96,7 @@ export default {
           return false
         }
         userData.setUserInf(res.data)
+        router.push('/')
       })
     }
   }

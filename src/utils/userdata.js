@@ -37,7 +37,7 @@ let getUserInfoByKey = (keyName) => {
   if (!userInfoObj) {
     return ''
   }
-  return userInfoObj[keyName] === undefined ? userInfoObj[keyName] : ''
+  return userInfoObj[keyName] !== undefined ? userInfoObj[keyName] : ''
 }
 
 /**
@@ -84,7 +84,6 @@ let checkUserRole = (role) => {
     return hasRole
   }
   UserMenu.forEach((item) => {
-    debugger
     if (item.subs !== undefined) {
       item.subs.forEach((subItem) => {
         if (subItem.index === role) hasRole = true
