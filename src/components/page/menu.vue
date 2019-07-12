@@ -14,7 +14,7 @@
             <el-row>
               <el-col :offset="18"
                       :span="2">
-                <el-button @click="btnAddMenu(1,menu.pid)"
+                <el-button @click="btnAddMenu(1,menu.id)"
                            type="primary">添加项目</el-button>
               </el-col>
               <el-col :span="2">
@@ -54,7 +54,7 @@
                                  type="text">修改</el-button>
 
                       <el-button class="btnAddSubClass"
-                                 @click="btnAddMenu(1,sub.pid)"
+                                 @click="btnAddMenu(1,sub.id)"
                                  type="text">添加action</el-button>
 
                     </div>
@@ -176,6 +176,9 @@ export default {
       this.formMenu.pid = pid
       this.formMenu.type = type
       this.formMenu.id = 0
+      this.formMenu.name = ''
+      this.formMenu.router = ''
+      this.formMenu.data_json = []
       this.formMenuTitle = '添加菜单'
       this.dialogMenuTableVisible = true
     },

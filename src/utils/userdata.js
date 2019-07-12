@@ -87,6 +87,9 @@ let checkUserRole = (role) => {
     if (item.subs !== undefined) {
       item.subs.forEach((subItem) => {
         if (subItem.index === role) hasRole = true
+        subItem.actionSub.forEach((actionSub) => {
+          if (actionSub.index === role) hasRole = true
+        })
       })
     }
   })

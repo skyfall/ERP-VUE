@@ -25,6 +25,21 @@ export default new Router({
           meta: { title: '菜单管理' }
         },
         {
+          path: '/organization',
+          component: resolve => require(['../components/page/organization.vue'], resolve),
+          meta: { title: '机构管理' }
+        },
+        {
+          path: '/user-list',
+          component: resolve => require(['../components/page/userList.vue'], resolve),
+          meta: { title: '用户管理' }
+        },
+        {
+          path: '/role-list',
+          component: resolve => require(['../components/page/roleList.vue'], resolve),
+          meta: { title: '角色管理' }
+        },
+        {
           path: '/404',
           component: resolve => require(['../components/page/404.vue'], resolve),
           meta: { title: '404' }
