@@ -45,6 +45,8 @@
                          type="success"
                          v-else
                          @click="btnUpdateStatus(scope.$index, scope.row)">启用</el-button>
+              <el-button size="mini"
+                         @click="btnUpdateRole(scope.$index, scope.row)">编辑权限</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -267,6 +269,11 @@ export default {
           message: '已取消删除'
         })
       })
+    },
+    // 编辑权限
+    btnUpdateRole (index, row) {
+      console.log(row.role_name, 'role_name')
+      this.$router.push({ path: '/role-node', query: { role_id: row.id } })
     }
   }
 }

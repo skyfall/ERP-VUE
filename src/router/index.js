@@ -40,6 +40,11 @@ export default new Router({
           meta: { title: '角色管理' }
         },
         {
+          path: '/role-node',
+          component: resolve => require(['../components/page/roleNode.vue'], resolve),
+          meta: { title: '角色权限' }
+        },
+        {
           path: '/404',
           component: resolve => require(['../components/page/404.vue'], resolve),
           meta: { title: '404' }
